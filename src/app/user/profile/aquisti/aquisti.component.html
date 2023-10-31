@@ -1,0 +1,39 @@
+<div class="table">
+    <br>
+    <div class="table_style">
+    <div class="title">
+        <strong>Storico Aquisti</strong>
+    </div>
+
+    <div class="table_center">
+        <table class="table2">
+            <thead>
+                <tr>
+                    <th (click)="sortProducts('id')">ID ORDINE
+                         <i  class="fas fa-arrow-up" *ngIf="orderBy === 'asc'"></i>
+                        <i class="fas fa-arrow-down" *ngIf="orderBy === 'desc'"></i>
+                    </th>
+                    <th (click)="sortProducts('giornoPrenotazione')"> DATA ORDINE
+                        <i  class="fas fa-arrow-up" *ngIf="orderBy === 'asc'"></i>
+                        <i class="fas fa-arrow-down" *ngIf="orderBy === 'desc'"></i>
+                    </th>
+                    <th (click)="sortProducts('totale')">COSTO
+                        <i  class="fas fa-arrow-up" *ngIf="orderBy === 'asc'"></i>
+                        <i class="fas fa-arrow-down" *ngIf="orderBy === 'desc'"></i>
+                    </th>
+                </tr>
+            </thead>
+            <br>
+            <tbody>
+                <!-- Sezione da Ciclare con i dati del Back-end -->
+                <tr *ngFor="let data of prenotazioni" class="element">
+                    <td><a (click)="saveDataToLocalStorage(data.id)" [routerLink]="['/user/product-detail']" >0000000000000{{data.id}}</a></td>
+                    <td>{{data.giornoPrenotazione | date:'yyy/MM/dd' }}</td>
+                    <td>{{data.totale}}</td>
+                    <td class="icon">
+                      <i (click)="saveDataToLocalStorage(data.id)" [routerLink]="['/user/product-detail']" class="far fa-eye"></i>
+                    </td>
+                    <hr>
+                  </tr>
+            </tbody>
+                  

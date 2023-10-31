@@ -1,0 +1,135 @@
+<div class="titoloDIV">
+  <div class="percorsoDIV">
+    <a [routerLink]="['/admin-dashboard/profile']"><p class="p2">Il tuo Profilo</p></a><p>/ Modifica</p></div>
+  <h1>Modifica</h1>
+  </div>
+
+<!-- TITOLO -->
+<div class="containerDIV">
+    <div class="titoloFORM">
+    <p class="p3">{{ nomeTEMP }}</p>
+    <a (click)="openDialog()"><button class="button" (click)="update()">SALVA</button></a>
+  </div>
+</div>
+
+<!-- TITOLO PRIMO FORM -->
+<div class="containerDIV2">
+<p class="p2">Informazioni Generali</p>
+</div>
+
+
+
+
+<!-- INFORMAZIONI GENERALI -->
+<!-- PRIMA RIGA -->
+<div class="containerDIV3" style="justify-content: flex-start;">
+
+  <div class="campoFORM">
+    <form class="example-form" style="width:calc(50% - 5px)">
+    <table class="example-full-width" cellspacing="0">
+      <tr>
+      <td><mat-form-field class="inputFORM" appearance="outline" subscriptSizing="dynamic">
+        <mat-label class="nomeCAMPO">Nome *</mat-label>
+        <input matInput value="{{ negozio.nome }}" [(ngModel)]="negozio.nome" [ngModelOptions]="{standalone: true}">
+      </mat-form-field></td>
+    </tr>
+  </table>
+  </form>
+  </div>
+
+
+
+  </div>
+
+
+  <!-- SECONDA RIGA -->
+<div class="containerDIV3">
+
+  <div class="campoFORM">
+    <form class="example-form">
+    <table class="example-full-width" cellspacing="0">
+      <tr>
+      <td><mat-form-field class="inputFORM" appearance="outline" subscriptSizing="dynamic">
+        <mat-label class="nomeCAMPO">Indirizzo *</mat-label>
+        <input matInput value="{{ negozio.indirizzo }}" [(ngModel)]="negozio.indirizzo" [ngModelOptions]="{standalone: true}">
+      </mat-form-field></td>
+    </tr>
+  </table>
+  </form>
+  </div>
+
+
+  <div class="campoFORM">
+    <form class="example-form">
+    <table class="example-full-width" cellspacing="0">
+      <tr>
+      <td><mat-form-field class="inputFORM" appearance="outline" subscriptSizing="dynamic">
+        <mat-label class="nomeCAMPO">Nazione *</mat-label>
+        <input matInput value="{{ negozio.nazione }}" [(ngModel)]="negozio.nazione" [ngModelOptions]="{standalone: true}">
+      </mat-form-field></td>
+    </tr>
+  </table>
+  </form>
+  </div>
+
+
+  <div class="campoFORM">
+    <form class="example-form">
+    <table class="example-full-width" cellspacing="0">
+      <tr>
+      <td><mat-form-field class="inputFORM" appearance="outline" subscriptSizing="dynamic">
+        <mat-label class="nomeCAMPO">Provincia *</mat-label>
+        <input matInput value="{{ negozio.provincia }}" [(ngModel)]="negozio.provincia" [ngModelOptions]="{standalone: true}">
+      </mat-form-field></td>
+    </tr>
+  </table>
+  </form>
+  </div>
+
+
+  <div class="campoFORM">
+    <form class="example-form">
+    <table class="example-full-width" cellspacing="0">
+      <tr>
+      <td><mat-form-field class="inputFORM" appearance="outline" subscriptSizing="dynamic">
+        <mat-label class="nomeCAMPO">Città di residenza *</mat-label>
+        <input matInput value="{{ negozio.citta }}" [(ngModel)]="negozio.citta" [ngModelOptions]="{standalone: true}">
+      </mat-form-field></td>
+    </tr>
+  </table>
+  </form>
+  </div>
+
+
+
+  </div>
+
+
+
+  <!-- TERZA RIGA -->
+<div class="containerDIV3" style="padding-bottom: 0px;">
+
+  <div class="campoFORM">
+    <form class="example-form">
+    <table class="example-full-width" cellspacing="0">
+      <tr>
+      <td style="height: 150px;padding-bottom: 0;"><mat-form-field class="inputFORM" appearance="outline" subscriptSizing="dynamic">
+        <mat-label class="nomeCAMPO">Descrizione *</mat-label>
+        <input matInput value="{{ negozio.descrizione }}" [(ngModel)]="negozio.descrizione" [ngModelOptions]="{standalone: true}">
+      </mat-form-field></td>
+    </tr>
+  </table>
+  </form>
+  </div>
+
+
+
+  </div>
+
+
+<div class="containerDIV2" style="padding-bottom: 20px;">
+
+  <p class="nomeCAMPO" style="margin-top:10px">* Campi obbligatori</p>
+
+</div>
+

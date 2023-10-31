@@ -1,0 +1,15 @@
+<div class="card">
+  <img class="img-card" routerLink="/user/dettaglio-prodotto-home"
+    mat-card-image
+    src="{{data.immagine1}}"
+    (click)="cardID()"
+  />
+  <div class="bodycard">
+    <mat-card-title class="titolo">{{ data.nome }}</mat-card-title>
+    <mat-card-subtitle class="subtitle">{{ data.type }}</mat-card-subtitle>
+    <mat-card-title class="prezzo">{{ data.prezzo | currency:'EUR' }} </mat-card-title>
+    <mat-card-footer>
+      <button mat-button color="coral" (click)="onAddCart(data)">ACQUISTA</button>
+    </mat-card-footer>
+  </div>
+</div>

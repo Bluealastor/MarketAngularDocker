@@ -1,0 +1,57 @@
+<div id="header" class="row no-gutters">
+
+  <!-- LOGO ESSE MARKET -->
+  <div class="logoESSE">
+        <img src="../../../assets/WHITE/MD.svg" alt="header">
+  </div>
+
+
+
+  <ng-template #elseBlock>
+    <div>
+      <!-- Contenuto da visualizzare quando la condizione è falsa -->
+      <button class="button_accedi" [routerLink]="['/login']">ACCEDI</button>
+    </div>
+  </ng-template>
+
+  <!-- MENU -->
+  <div class="menuHeader">
+  <!-- <i class="fas fa-shopping-cart fa-lg" style="color: #ffffff; margin-left: 78%;" (click)="openDialog()"></i> -->
+  <app-cart style="margin-right: 30px;" *ngIf="openCart"></app-cart>
+  <div  *ngIf="toolbar; else elseBlock">
+    <!-- CERCHIO INIZIALI -->
+    <div style="display: flex; flex-wrap: nowrap;align-items: center;">
+    <div class="circle">{{anagrafica?.nome?.charAt(0)}}{{anagrafica?.cognome?.charAt(0)}}</div>
+
+  <!-- UTENTE LOGGATO -->
+
+
+  <button mat-button [matMenuTriggerFor]="menu" style="color:white;min-width: fit-content">{{anagrafica?.nome}} {{anagrafica?.cognome}}
+      <i class="fa fa-angle-down" aria-hidden="true" style="margin-left: 10px;color: white"></i></button>
+    </div>
+  <mat-menu #menu="matMenu">
+    <a (click)="redirectHome()">
+      <button mat-menu-item>
+        <i class="fa fa-user" aria-hidden="true" style="align-self: left;margin-right:15px"></i>HOME
+      </button>
+    </a>
+
+    <a (click)="redirectToPage()">
+      <button mat-menu-item>
+      <i class="fa fa-user" aria-hidden="true" style="align-self: left;margin-right:15px"></i>Il tuo profilo
+    </button>
+  </a>
+  <a (click)="redirectEdit()">
+    <button mat-menu-item>
+    <i class="fa fa-user" aria-hidden="true" style="align-self: left;margin-right:15px"></i>Modifica Profilo
+  </button>
+  </a>
+
+
+  <button mat-menu-item (click)="logout()"><i class="fa fa-times-circle" aria-hidden="true" style="align-self: left;margin-right:15px"></i>Logout</button>
+  </mat-menu>
+</div>
+</div>
+
+
+

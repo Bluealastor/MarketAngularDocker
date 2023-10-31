@@ -1,0 +1,15 @@
+.svg{
+    z-index: 3;
+    position: absolute;
+    left: 0 !;
+    bottom: 170px;
+}
+@keyframes fadeInOut {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  
+  .show-hide-animation {
+    animation: fadeInOut 2s ease-out;
+  }

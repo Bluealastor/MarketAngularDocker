@@ -1,0 +1,76 @@
+#header {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  background-color: var(--primary)
+}
+
+.button_accedi{
+  width: 85px;
+  height: 30px;
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+  margin-left: 1vw;
+
+}
+
+.accedi{
+  background-color: black;
+  border-radius: 10%;
+  width: 90px;
+  height: 30px;
+  color: white;
+}
+
+
+.logoESSE{
+  margin-left: 50px;
+  position: relative;
+  display: flex;
+  justify-content: left;
+  height: 80%;
+}
+
+.menuHeader{
+  margin-right: 30px;
+  margin-left: auto;
+  position: relative;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  width: fit-content;
+}
+
+.circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 15px;
+  color: white;
+  text-align: center;
+  background: black;
+}
+
+a{
+  text-decoration: none;
+}
+
+p{
+  font-size: 19px;
+  color: #f1f1f1;
+  text-align: right;
+  margin-left: 0px;
+  padding-right: 25px;
+  padding-left: 5px;
+  padding-top: 12px;
+  height: inherit;
+  width: 100%;
+  background-color: #e6854e !important;
+}
+.row{
+  margin:0px !important;
+}

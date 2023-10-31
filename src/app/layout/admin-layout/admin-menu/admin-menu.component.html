@@ -1,0 +1,61 @@
+<div class="containerDIV">
+
+<!-- USER -->
+<div class="userDIV">
+
+<button type="button" class="menubtn" data-toggle="collapsebtn" data-target="#user"
+  (click)="userscollapse()">
+  <p><i id="icon" class="fa fa-users" aria-hidden="true" style="margin-right: 15px;"></i>Utenti
+  <i id="freccia" class="fa fa-angle-down" [class.fa-angle-up]="isUserCollapsed" aria-hidden="true" style="margin-left: auto;margin-right: 0;"></i></p>
+</button>
+
+
+<div class="collapsebtn" id="user" *ngIf="isUserCollapsed">
+
+  <a [routerLink]="['/admin-dashboard/users']"><button class="menubtn" style="padding-left: 60px">
+    <p>Tutti gli utenti</p>
+  </button></a>
+
+</div>
+
+
+</div>
+
+
+<!-- PRODOTTI -->
+<div class="userDIV">
+
+  <button type="button" class="menubtn" data-toggle="collapsebtn" data-target="#product"
+    (click)="productscollapse()">
+    <p><i id="icon" class="fa fa-briefcase" aria-hidden="true" style="margin-right: 15px;"></i>Prodotti
+    <i id="freccia" class="fa fa-angle-down" [class.fa-angle-up]="isProductCollapsed" aria-hidden="true" style="margin-left: auto;margin-right: 0;"></i></p>
+  </button>
+
+
+  <div class="collapsebtn" id="product" *ngIf="isProductCollapsed">
+
+    <a [routerLink]="['/admin-dashboard/products']"><button class="menubtn" style="padding-left: 60px">
+      <p>Tutti i prodotti</p>
+    </button></a>
+
+    <a [routerLink]="['/admin-dashboard/aggiungiProdotto']"><button class="menubtn" style="padding-left: 60px">
+      <p>Aggiungi nuovo</p>
+    </button></a>
+
+  </div>
+
+
+  </div>
+
+
+  <!-- IL TUO PROFILO -->
+  <div class="userDIV">
+
+    <a [routerLink]="['/admin-dashboard/profile']"><button type="button" class="menubtn">
+    <p><i id="icon" class="fa fa-user" aria-hidden="true" style="margin-right: 15px;"></i>Il tuo profilo</p>
+  </button></a>
+
+  </div>
+
+
+</div>

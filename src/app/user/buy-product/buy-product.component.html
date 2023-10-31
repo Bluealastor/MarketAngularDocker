@@ -1,0 +1,71 @@
+<div class="page-card">
+    <div class="card">
+        <div style="margin-left: 3em;margin-top: 2em;">
+            <img src="../../../assets/success.png">
+
+<div>
+    <p style="margin-top:1em">
+        <strong style="font-size: 23px; font-weight: 600;">
+        Prenotazione Ricevuta!
+    </strong>
+    </p>
+    <p>
+        il tuo ordine N°  00000{{prenotazione.id}} ordine  è andato a buon fine.
+    </p>
+</div>
+<hr>
+<div>
+    <p style="font-size: 23px; font-weight: 600;">Info Utente</p>
+    <p><strong *ngIf="prenotazione.id">
+    {{prenotazione.user.email}}
+</strong>
+</p>
+    
+<div>
+    <p>
+        Dati di residenza
+    </p>
+    <div>
+        Dati da inserire residenza
+    </div>
+</div>
+<hr>
+<div>
+    
+
+
+ <p style="font-size: 23px; font-weight: 600;">Info Prodotto</p>
+ <div style="width: 100%;">
+    <div><div class="prodotto" *ngFor="let p of prenotazione.acquisti" style="width: 90%;">
+       <div>
+       
+       <div class="info"><img src="{{p.immagine1}}" width="120px" height="80px" ><div class="nome"> {{p.nome}}</div>
+       </div>
+       <hr width="400px" style="bottom:0;">
+    </div>
+    <div class="prezzo">{{p.prezzo| currency:'EUR'}}</div></div>
+    
+    </div>
+    <hr width="90%" style="bottom:0;">
+    
+</div>
+<div style="position: relative;left: 45%;"> 
+</div>
+</div>
+
+
+
+<div>
+<div style="display: flex; flex-wrap: nowrap; gap: 62vw;">
+<p>Sub Totale:</p>        <div>{{prenotazione.totale|currency:'EUR'}}</div>
+</div>
+<div style="display: flex; flex-wrap: nowrap; gap: 63.8vw;font-weight: 600;">
+<p>Totale:</p>            <div>{{prenotazione.totale+10|currency:'EUR'}}</div>
+</div>
+</div>
+
+
+</div>
+</div>
+</div>
+</div>

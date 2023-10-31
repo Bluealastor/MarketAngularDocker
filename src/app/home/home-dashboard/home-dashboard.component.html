@@ -1,0 +1,82 @@
+<div class="pagina">
+  <div class="immagine">
+</div>
+
+
+<div class="filtri">
+
+    <div class="select">
+
+
+      <mat-form-field MatFormFieldControl="ciao" appearance="outline" style="width: 225px;">
+        <mat-label>Tipologia</mat-label>
+        <mat-select (selectionChange)="dofilter($event)">
+          <mat-option value="tutto">tutto</mat-option>
+          <mat-option value="ALIMENTARI">Alimentari</mat-option>
+          <mat-option value="CANCELLERIA">Cancelleria</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+      <mat-form-field MatFormFieldControl="ciao" appearance="outline" style="width: 225px;">
+        <mat-label>Prezzo</mat-label>
+        <mat-select (selectionChange)="changeOrder($event)">
+          <mat-option value="CRESCENTE">
+            Dal più basso
+          </mat-option>
+          <mat-option value="DESCRESCENTE">
+            Dal più alto
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+      <mat-form-field MatFormFieldControl="ciao" appearance="outline" style="width: 225px;">
+        <mat-label>Orari</mat-label>
+        <mat-select (selectionChange)="filterOra($event)">
+          <mat-option value="tutto">tutto</mat-option>
+          <mat-option value=9>9:00</mat-option>
+          <mat-option value=10>10:00</mat-option>
+          <mat-option value=11>11:00</mat-option>
+          <mat-option value=12>12:00</mat-option>
+          <mat-option value=13>13:00</mat-option>
+          <mat-option value=14>14:00</mat-option>
+          <mat-option value=15>15:00</mat-option>
+          <mat-option value=16>16:00</mat-option>
+          <mat-option value=17>17:00</mat-option>
+          <mat-option value=18>18:00</mat-option>
+          <mat-option value=19>19:00</mat-option>
+          <mat-option value=20>20:00</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+    </div>
+
+
+    <mat-form-field   class="search" appearance="outline" style="width: 420px;margin-right: 20px;">
+
+      <mat-label class="p2">Ricerca prodotto</mat-label>
+      <input matInput [(ngModel)]="searchText" type="text"  placeholder="Cerca" (input)="filterItems()">
+      <mat-icon matSuffix>search</mat-icon>
+
+    </mat-form-field>
+
+
+
+
+</div>
+
+
+
+
+
+  <div class="rimuoviP">
+
+    </div>
+<div class="cards">
+  <div class="card" *ngFor="let card of cards">
+    <app-card [data]="card"></app-card>
+  </div>
+</div><app-popup-aggiungi-carrello></app-popup-aggiungi-carrello>
+</div>

@@ -1,0 +1,164 @@
+<div class="container">
+  <div class="container-wrap">
+    <div class="logo"></div>
+    <div class="step">
+      <div class="top" *ngIf="isEnd">
+  
+  
+        <div ><p class="arancio">Registrati</p>
+        <p class="grigio">Inserisci tutti i tuoi dati e procedi con la registrazione</p>
+        <mat-divider style="width: 94%; margin-left: 3%;"></mat-divider></div>
+        
+      </div>
+  
+      <mat-stepper #stepper linear *ngIf="isEnd">
+  
+        <mat-step  [stepControl]="firstcontrol" [editable]="isEditable">
+          <form [formGroup]="firstFormGroup" class="primoform">
+            <ng-template matStepLabel>Dati di Login</ng-template>
+            <div class="credenziali">
+              <p>CREDENZIALI DI ACCESSO</p>
+            </div>
+            <div style="margin-top: 10px;">
+              <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email" 
+                  required /></mat-form-field>
+  
+              <mat-form-field  appearance="outline">
+                <mat-label>Type</mat-label>
+                <mat-select  formControlName="usertype" required>
+                  <mat-option   value="USER">User</mat-option>
+                  <mat-option value="ADMIN" >Admin</mat-option>
+                </mat-select> 
+              </mat-form-field> 
+            </div>
+            <div class="input-bassi">
+              <mat-form-field appearance="outline">
+                <mat-label>Inserisci la Password</mat-label>
+                <input formControlName="password1" matInput [type]="hide ? 'password' : 'text'">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                  [attr.aria-pressed]="hide" >
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>conferma password</mat-label>
+                <input formControlName="password2" matInput [type]="hide ? 'password' : 'text'">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                  [attr.aria-pressed]="hide" >
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+              </mat-form-field>
+  
+            </div>
+            <mat-checkbox class="custom-checkbox" formControlName="checkbox"  >Ho preso visione dell'<a href="">informativa sulla privacy</a></mat-checkbox>
+            <mat-divider style="width: 94%; margin-left: 3%;"></mat-divider>
+            <div class="bottone">
+  
+              <button (click)="redirectLogin()" color="back" class="login">RITORNA ALLA LOGIN</button>
+             <button matStepperNext mat-raised-button (click)="onUserTypeChange()" [disabled]="!firstFormGroup.valid" color="coral">AVANTI</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="secondcontrol" [editable]="isEditable">
+          <form [formGroup]="secondFormGroup" >
+            <ng-template matStepLabel>Anagrafica</ng-template>
+            <p>DATI ANAGRAFICI</p>
+            <div class="anagrafica">
+              <mat-form-field appearance="outline">
+                <mat-label>Nome</mat-label>
+                <input matInput formControlName="nome" placeholder="Nome" type="text" required />
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Cognome</mat-label>
+                <input matInput formControlName="cognome" placeholder="Cognome" required />
+              </mat-form-field>
+             
+            </div>
+            <div class="sessoDate">
+              <mat-form-field appearance="outline">
+                <mat-label>Sesso</mat-label>
+                <mat-select formControlName="sesso" matNativeControl required>
+                  <mat-option value="UOMO">Maschio</mat-option>
+                  <mat-option value="DONNA">Femmina</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Scegli la data</mat-label>
+                <input formControlName="dataNascita" matInput [matDatepicker]="picker" />
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
+  
+  
+            <div class="indirizzo">
+              <mat-form-field appearance="outline">
+                <mat-label>Nazione</mat-label>
+                <input matInput formControlName="nazione"  required />
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Provincia</mat-label>
+                <input matInput formControlName="provincia"  required />
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Città</mat-label>
+                <input matInput formControlName="citta"  required />
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Indirizzo</mat-label>
+                <input matInput formControlName="indirizzo"  required />
+              </mat-form-field>
+            </div>
+            <div class="button-container">
+              <button mat-button matStepperPrevious color="back">Indietro</button>
+              <button *ngIf="isAdmin" mat-raised-button matStepperNext [disabled]="!secondFormGroup.valid" color="coral" >AVANTI</button>
+              <button *ngIf="!isAdmin" mat-raised-button (click)="onEnd()" [disabled]="!secondFormGroup.valid"  color="coral">Fine</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step *ngIf="isAdmin" [stepControl]="control" [editable]="isEditable">
+          <form [formGroup]="thirdFormGroup" >
+            <ng-template matStepLabel>Negozio</ng-template>
+            <p>Negozio</p>
+            <div class="nome">
+            <mat-form-field appearance="outline">
+              <mat-label>Nome</mat-label>
+              <input matInput formControlName="nomeNegozio"  required />
+            </mat-form-field>
+          </div>
+          <div class="descrizione">
+            <mat-form-field appearance="outline">
+              <mat-label>Descrizione</mat-label>
+              <input matInput formControlName="descrizioneNegozio"required />
+            </mat-form-field>
+          </div>
+          <div class="indirizzo">
+            <mat-form-field appearance="outline">
+              <mat-label>Provincia</mat-label>
+              <input matInput formControlName="provinciaNegozio"required />
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>città</mat-label>
+              <input matInput formControlName="cittaNegozio"  required />
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Indirizzo</mat-label>
+              <input matInput formControlName="indirizzoNegozio" required />
+            </mat-form-field>
+          </div>
+            <div class="button-container">
+              <button mat-button matStepperPrevious color="back">INDIETRO</button>
+              <button mat-raised-button (click)="onEnd()" [disabled]="!thirdFormGroup.valid" matStepperNext color="coral">FINE</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-divider style="width: 94%; margin-left: 3%;" *ngIf="isEnd"></mat-divider>
+      </mat-stepper>
+      <div class="stepper-footer"></div>
+    </div>
+  </div>
+  
+  <div class="popup" *ngIf="!isEnd"><div class="icon"><mat-icon>done</mat-icon></div><br><p>Profilo Creato</p><div class="endgrigio">Account creato con successo</div><button mat-raised-button color="coral" (click)="redirectLogin()">RITORNA ALLA LOGIN</button></div>
+  </div>

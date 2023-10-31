@@ -1,0 +1,148 @@
+<div class="containerDIV" style="justify-content: left;padding-top: 0;padding-bottom: 0;height: fit-content;">
+
+<!-- IMMAGINI PRODOTTO -->
+<div class="containerDIV2" style="margin-top:30px;width: 50%;justify-content: space-between;padding-left: 0;padding-bottom: 10px;height: fit-content;">
+
+  <div class="containerDIV2" style="flex-direction: column;padding-right: 0;padding-left: 0;width: 25%;padding-bottom: 0;">
+
+    <div style="width: 100%;height: 160px;padding-bottom: 10px;">
+    <img src="{{prodotto.immagine1}}" style="width: 100%; height: 100%;border-radius: 8px;">
+    </div>
+
+    <div style="width: 100%;height: 160px;padding-bottom: 10px;">
+    <img src="{{prodotto.immagine2}}" style="width: 100%; height: 100%;border-radius: 8px;">
+    </div>
+
+    <div style="width: 100%;height: 160px;padding-bottom: 10px;">
+    <img src="{{prodotto.immagine3}}" style="width: 100%; height: 100%;border-radius: 8px;">
+    </div>
+
+    <div style="width: 100%;height: 160px;padding-bottom: 10px;">
+    <img src="{{prodotto.immagine4}}" style="width: 100%; height: 100%;border-radius: 8px;">
+    </div>
+
+  </div>
+
+  <div class="containerDIV2" style="width: 100%;padding-left: 10px;padding-bottom: 0;padding-right: 10px;">
+
+    <div style="width: 100%;padding-bottom: 10px;">
+    <img src="{{prodotto.immagine5}}" style="width: 100%; height: 100%;border-radius: 8px;">
+    </div>
+
+  </div>
+
+
+
+</div>
+
+<!-- DETTAGLIO PRODOTTO -->
+<div class="containerDIV2" style="padding-left: 0;width: 50%;flex-direction: column;padding-right: 0;margin-top: 30px;">
+
+
+  <div class="containerDIV2" style="padding-left: 0;padding-right: 0;flex-direction: column;">
+
+    <div class="colonna" style="margin-bottom: 30px;margin-top: 10px;">
+      <p style="font-size: 30px;">{{prodotto.nome}}</p>
+    </div>
+
+    <div class="colonna" style="margin-bottom: 20px;">
+      <p style="font-size: 30px;">{{prodotto.prezzo}},00 €</p>
+    </div>
+
+  </div>
+
+
+  <div class="containerDIV2" style="padding-left: 0;padding-right: 0;">
+
+  <div class="colonna" style="width: 30%;">
+    <p class="p2">TIPOLOGIA</p>
+    <p> {{ prodotto.type }} </p>
+  </div>
+
+  <div class="colonna">
+    <p class="p2">CODICE PRODOTTO</p>
+    <p> #000000000{{ prodotto.id }} </p>
+  </div>
+
+
+  </div>
+
+
+  <div class="containerDIV2" style="padding-left: 0;padding-right: 0;">
+
+  <div class="colonna" style="height: 320px;">
+    <p class="p2">DESCRIZIONE</p>
+    <p> {{ prodotto.descrizione }} </p>
+  </div>
+
+  </div>
+
+
+  <div class="containerDIV2" style="padding-left: 0;width: 100%;flex-direction: column;padding-right: 0;margin-top: 50px;">
+
+    <div style="display: flex;justify-content: space-between;flex-direction: row;align-items: center;width: 100%;">
+
+        <div class="campoFORM">
+          <form class="example-form">
+            <table class="example-full-width" cellspacing="0">
+              <tr>
+                <td><mat-form-field class="inputFORM" appearance="outline" subscriptSizing="dynamic">
+                    <mat-select placeholder="Scegli orario">
+                      <mat-option value="OPZIONE">OPZIONE</mat-option>
+                    </mat-select>
+                  </mat-form-field></td>
+              </tr>
+            </table>
+          </form>
+        </div>
+
+        <div><a><button class="button" style="width: 100px;" (click)="addCart()">PRENOTA</button></a></div>
+
+
+
+    </div>
+
+
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+<!-- PRODOTTI CORRELATI -->
+<div class="containerDIV" style="justify-content: left;padding-top: 0;padding-bottom: 0;height: fit-content;margin-top: 0;flex-direction: column;">
+
+  <div class="colonna" style="margin-bottom: 30px;margin-top: 10px;">
+    <p style="font-size: 30px;">Prodotti correlati</p>
+  </div>
+
+</div>
+
+<div class="containerDIV" style="justify-content: left;padding-top: 0;padding-bottom: 0;height: fit-content;margin-top: 0;flex-direction: row;
+                                margin-bottom: 40px;">
+
+  <div *ngFor="let card of cards" style="display: flex;flex-direction: row;height: fit-content;">
+    <div class="card" style="margin-right: 10px;border-radius: 5px;flex-direction: column;margin-bottom: 20px;">
+      <a [routerLink]="['/user/dettaglio-prodotto-home']" (click)="cardID(card.id)">
+      <img src="{{card.immagine1}}" mat-card-image width="100%" height="fit-content"
+      style="border-top-right-radius: 5px;border-top-left-radius: 5px;">
+      </a>
+      <div class="bodycard">
+        <mat-card-title class="titolo"><p style="margin-top: 20px;font-weight: bold;">{{ card.nome }}</p></mat-card-title>
+        <mat-card-subtitle class="subtitle"><p class="p2" style="font-weight: normal;font-size: 13px;">{{ card.type }}</p></mat-card-subtitle>
+        <mat-card-title class="prezzo"><p style="margin-top: 30px;font-weight: bold;">{{ card.prezzo | currency:'EUR' }}</p></mat-card-title>
+      </div>
+    </div>
+  </div>
+
+</div>

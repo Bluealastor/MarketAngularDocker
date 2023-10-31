@@ -1,0 +1,102 @@
+<div class="titoloDIV">
+  <div class="percorsoDIV">
+    <a [routerLink]="['/admin-dashboard/products']"><p class="p2" style="margin-right: 10px;">Prodotti</p></a>
+    <a [routerLink]="['/admin-dashboard/products']"><p class="p2">/ Tutti i prodotti</p></a>
+    <p>/ Dettaglio prodotto</p>
+  </div>
+  <h1>Dettaglio Prodotto</h1>
+ </div>
+
+<!-- DETTAGLIO -->
+<div class="containerDIV">
+  <div class="titoloFORM">
+  <p class="p3"> {{ prodotto.nome }} </p>
+  <a [routerLink]="['/admin-dashboard/editProdotto']" ><button class="button2">MODIFICA</button></a>
+</div>
+</div>
+
+
+<div class="containerDIV" style="margin-top: 0;justify-content: left;padding-top: 0;padding-bottom: 0;height: 60%;">
+
+<!-- IMMAGINI PRODOTTO -->
+<div class="containerDIV2" style="width: 50%;justify-content: space-between;padding-left: 0;padding-bottom: 10px;">
+
+  <div class="containerDIV2" style="flex-direction: column;padding-right: 0;padding-left: 0;width: 25%;padding-bottom: 0;">
+
+    <div style="width: 100%;height: 160px;padding-bottom: 10px;">
+    <img src="{{prodotto.immagine1}}" style="width: 100%; height: 100%;border-radius: 8px;">
+    </div>
+
+    <div style="width: 100%;height: 160px;padding-bottom: 10px;">
+    <img src="{{prodotto.immagine2}}" style="width: 100%; height: 100%;border-radius: 8px;">
+    </div>
+
+    <div style="width: 100%;height: 160px;padding-bottom: 10px;">
+    <img src="{{prodotto.immagine3}}" style="width: 100%; height: 100%;border-radius: 8px;">
+    </div>
+
+    <div style="width: 100%;height: 160px;padding-bottom: 10px;">
+    <img src="{{prodotto.immagine4}}" style="width: 100%; height: 100%;border-radius: 8px;">
+    </div>
+
+  </div>
+
+  <div class="containerDIV2" style="width: 100%;padding-left: 10px;padding-bottom: 0;padding-right: 10px;">
+
+    <div style="width: 100%;padding-bottom: 10px;">
+    <img src="{{prodotto.immagine5}}" style="width: 100%; height: 100%;border-radius: 8px;">
+    </div>
+
+  </div>
+
+
+
+</div>
+
+<!-- DETTAGLIO PRODOTTO -->
+<div class="containerDIV2" style="padding-left: 0;width: 50%;flex-direction: column;padding-right: 0;">
+
+  <div class="containerDIV2" style="padding-left: 0;padding-right: 0;">
+
+  <div class="colonna">
+    <p class="p2">TIPOLOGIA</p>
+    <p> {{ prodotto.type }} </p>
+  </div>
+
+  <div class="colonna">
+    <p class="p2">COSTO</p>
+    <p> € {{ prodotto.prezzo | number:'1.2-2' }}  </p>
+  </div>
+
+  <div class="colonna">
+    <p class="p2">ORARI DISPONIBILI</p>
+    <p> {{ prodotto.orariDisponibili }} </p>
+  </div>
+
+  </div>
+
+
+  <div class="containerDIV2" style="padding-left: 0;padding-right: 0;">
+
+  <div class="colonna">
+    <p class="p2">CODICE PRODOTTO</p>
+    <p> #000000000{{ prodotto.id }} </p>
+  </div>
+
+  </div>
+
+
+
+  <div class="containerDIV2" style="padding-left: 0;padding-right: 0;">
+
+  <div class="colonna">
+    <p class="p2">DESCRIZIONE</p>
+    <p> {{ prodotto.descrizione }} </p>
+  </div>
+
+  </div>
+
+
+</div>
+
+</div>

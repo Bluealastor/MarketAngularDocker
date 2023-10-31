@@ -1,0 +1,3 @@
+export enum ProductType {
+  ALIMENTARI, CANCELLERIA , IGENE_PERSONALE
+}

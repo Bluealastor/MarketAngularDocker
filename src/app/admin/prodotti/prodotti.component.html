@@ -1,0 +1,247 @@
+<div class="titoloDIV">
+  <div class="percorsoDIV">
+    <a [routerLink]="['/admin-dashboard/products']">
+      <p class="p2">Prodotti</p>
+    </a>
+    <p>/ Tutti i prodotti</p>
+  </div>
+  <div class="percorsoDIV" style="height: fit-content;justify-content: space-between;">
+    <h1>Tutti i prodotti</h1>
+    <a [routerLink]="['/admin-dashboard/aggiungiProdotto']">
+      <button class="button2">AGGIUNGI PRODOTTO</button>
+    </a>
+  </div>
+</div>
+
+
+<div style="display: flex;flex-direction: row;gap: 20px;">
+
+
+  <!-- CHART DONUT -->
+  <div class="containerDIV" style="flex-direction: column;display: flex;width: 30%;height: 400px;">
+
+
+    <!-- TITOLO -->
+    <div class="containerDIV" style="padding-bottom: 20px;margin-top: 0;padding-left: 0;">
+      <div class="titoloFORM">
+        <p class="p3" style="color: gray;">Totale prodotti caricati </p>
+      </div>
+    </div>
+
+    <div
+      style="display: flex; justify-content: center; align-items: center; width: 100%; height: 50%; margin-top: 40px;">
+      <canvas id="myChart" style="z-index: 2;"></canvas>
+      <p style="display: flex;justify-content: center;align-content: center;position: absolute;margin-right: 0;
+    font-size: 38px;z-index: 1;font-weight: bolder;">{{lengthProdotti}}</p>
+    </div>
+
+
+
+
+
+  </div>
+
+  <!-- CHART2 -->
+  <div class="containerDIV" style="flex-direction: column;display: flex;width: 100%;height: 400px;">
+
+    <!-- TITOLO -->
+    <div class="containerDIV" style="padding-bottom: 20px;margin-top: 0;padding-left: 0;">
+      <div class="titoloFORM">
+        <p class="p3" style="color: gray;">Vendite </p>
+      </div>
+    </div>
+
+    <div style="display: flex;justify-content: left;width: 100%;height: 100%;padding-bottom: 10px;">
+      <div style="width: 100%;height: 98%">
+        <canvas id="myChartLine"></canvas>
+      </div>
+    </div>
+
+
+
+  </div>
+
+</div>
+
+
+
+
+
+
+
+<!-- OPZIONI -->
+<div class="containerDIV">
+
+
+  <div class="campoFORM">
+    <form class="example-form">
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td><mat-form-field class="inputFORM" appearance="outline" subscriptSizing="dynamic">
+              <mat-select placeholder="Azioni di gruppo" (selectionChange)="applica($event)">
+                <mat-option value="DELETE">DELETE</mat-option>
+              </mat-select>
+            </mat-form-field></td>
+        </tr>
+      </table>
+    </form>
+  </div>
+
+  <div><a><button class="button" [ngClass]="{'disabled-button': isDisabled}" (click)="azioneDiGruppo()">APPLICA</button></a></div>
+
+
+
+
+
+
+</div>
+
+<!-- TABELLA -->
+
+<div class="containerDIV2">
+
+  <div class="mat-elevation-z8" style="box-shadow: none;">
+    <table mat-table [dataSource]="dataSource" matSort (matSortChange)="sortData($event)">
+
+      <!-- Checkbox Column -->
+      <ng-container matColumnDef="select">
+        <th mat-header-cell *matHeaderCellDef style="width: 1%;">
+
+          <div style="display:flex;flex-direction: row;">
+            <mat-checkbox (change)="masterToggle()" [checked]="selection.hasValue() && isAllSelected()"
+              [indeterminate]="selection.hasValue() && !isAllSelected()">
+            </mat-checkbox>
+            <mat-divider [vertical]="true"
+              style="margin-top: 12px;margin-bottom: 12px;border-width: 2px;width: 10px;"></mat-divider>
+          </div>
+
+        </th>
+        <td mat-cell *matCellDef="let row" style="border-bottom: 1px solid lightgray;border-top: 1px solid lightgray;">
+          <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
+            [checked]="selection.isSelected(row)">
+          </mat-checkbox>
+        </td>
+      </ng-container>
+
+
+
+
+      <!-- NOME -->
+      <ng-container matColumnDef="nome">
+        <th mat-header-cell *matHeaderCellDef style="width: 20%;">
+          <div style="display:flex;flex-direction: row;height: 40px;align-items: center;justify-content: left;">
+            <div style="display: flex;position: relative;justify-content: flex-start;width: 100%;">
+              <p style="width: fit-content;">NOME</p>
+              <i id="sort" aria-hidden="true" mat-sort-header="nome"></i>
+            </div>
+            <div style="display: flex;position: relative;justify-content: flex-end;width: 100%;">
+              <mat-divider [vertical]="true" style="border-width: 2px;width: 10px;height: 16px;">
+              </mat-divider>
+            </div>
+          </div>
+        </th>
+        <td mat-cell *matCellDef="let product" style="border-bottom: 1px solid lightgray;border-top: 1px solid lightgray;"> {{product.nome}} </td>
+      </ng-container>
+
+      <!-- TIPOLOGIA -->
+      <ng-container matColumnDef="tipologia">
+        <th mat-header-cell *matHeaderCellDef style="width: 20%;">
+          <div style="display:flex;flex-direction: row;height: 40px;align-items: center;justify-content: left;">
+            <div style="display: flex;position: relative;justify-content: flex-start;width: 100%;">
+              <p style="width: fit-content;">TIPOLOGIA</p>
+              <i id="sort" aria-hidden="true" mat-sort-header="tipologia"></i>
+            </div>
+            <div style="display: flex;position: relative;justify-content: flex-end;width: 100%;">
+              <mat-divider [vertical]="true" style="border-width: 2px;width: 10px;height: 16px;">
+              </mat-divider>
+            </div>
+          </div>
+        </th>
+        <td mat-cell *matCellDef="let product" style="border-bottom: 1px solid lightgray;border-top: 1px solid lightgray;"> {{product.type}} </td>
+      </ng-container>
+
+      <!-- PREZZO -->
+      <ng-container matColumnDef="prezzo">
+        <th mat-header-cell *matHeaderCellDef style="width: 20%;">
+          <div style="display:flex;flex-direction: row;height: 40px;align-items: center;justify-content: left;">
+            <div style="display: flex;position: relative;justify-content: flex-start;width: 100%;">
+              <p style="width: fit-content;">PREZZO</p>
+              <i id="sort" aria-hidden="true" mat-sort-header="prezzo"></i>
+            </div>
+            <div style="display: flex;position: relative;justify-content: flex-end;width: 100%;">
+              <mat-divider [vertical]="true" style="border-width: 2px;width: 10px;height: 16px;">
+              </mat-divider>
+            </div>
+          </div>
+        </th>
+        <td mat-cell *matCellDef="let product" style="border-bottom: 1px solid lightgray;border-top: 1px solid lightgray;">€ {{product.prezzo |
+          number:'1.2-2' }} </td>
+      </ng-container>
+
+      <!-- ORARI DISPONIBILI -->
+      <ng-container matColumnDef="orari">
+        <th mat-header-cell *matHeaderCellDef style="width: 20%;">
+          <div style="display:flex;flex-direction: row;height: 40px;align-items: center;justify-content: left;">
+            <div style="display: flex;position: relative;justify-content: flex-start;width: 100%;">
+              <p style="width: fit-content;">ORARI DISPONIBILI</p>
+              <i id="sort" aria-hidden="true" mat-sort-header="orari"></i>
+            </div>
+          </div>
+        </th>
+        <td mat-cell *matCellDef="let product" style="border-bottom: 1px solid lightgray;border-top: 1px solid lightgray;"> {{product.orariDisponibili}}
+        </td>
+      </ng-container>
+
+      <!-- ICONE -->
+      <ng-container matColumnDef="icone">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let product" style="width: 10%;border-right: 1px solid lightgray;
+        border-bottom: 1px solid lightgray;padding-right: 0;border-top: 1px solid lightgray;">
+          <div style="display: flex;flex-direction: row;justify-content: space-evenly;">
+
+            <div style="display:grid; justify-items: center;width: 100%;">
+              <a [routerLink]="['/admin-dashboard/dettaglioProdotto']" (click)="getRowId(product.id)">
+                <i class="far fa-eye" aria-hidden="true" style="margin-right: 10px;font-size: 15px;"></i>
+              </a>
+            </div>
+
+            <mat-divider [vertical]="true" style="border-width: 2px;height: 16px;"></mat-divider>
+
+            <div style="display:grid; justify-items: center;width: 100%;">
+              <a [routerLink]="['/admin-dashboard/editProdotto']" (click)="getRowId(product.id)">
+                <i class="fa fa-pen" style="margin-right: 10px;margin-left: 10px;font-size: 15px;"></i>
+              </a>
+            </div>
+
+            <mat-divider [vertical]="true" style="border-width: 2px;height: 16px;"></mat-divider>
+
+            <div style="display:grid; justify-items: center;width: 100%;margin-right: 10px;">
+              <a [routerLink]="['/admin-dashboard/products']" (click)="openDialogElimina(product.id)">
+                <i class="fa fa-trash" aria-hidden="true" style="font-size: 15px;"></i>
+              </a>
+            </div>
+
+
+          </div>
+        </td>
+      </ng-container>
+
+
+
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)">
+      </tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of products">
+    </mat-paginator>
+  </div>
+
+
+
+
+
+
+</div>

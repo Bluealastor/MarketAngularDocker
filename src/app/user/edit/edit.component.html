@@ -1,0 +1,375 @@
+<div class="page" style="margin-top: 50px;">
+
+
+<!-- TITOLO -->
+<div class="containerDIV">
+  <div class="titoloFORM">
+    <p class="p3">{{ nomeTEMP }} {{ cognomeTEMP }}</p>
+    <a
+      ><button class="button" (click)="update(user, anagrafica)">
+        SALVA
+      </button></a
+    >
+  </div>
+</div>
+
+<!-- TITOLO PRIMO FORM -->
+<div class="containerDIV2">
+  <p class="p2">Informazioni Generali</p>
+</div>
+
+<!-- INFORMAZIONI GENERALI -->
+<!-- PRIMA RIGA -->
+<div class="containerDIV3">
+  <div class="campoFORM">
+    <form class="example-form">
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field
+              class="inputFORM"
+              appearance="outline"
+              subscriptSizing="dynamic"
+            >
+              <mat-label class="nomeCAMPO">Cognome *</mat-label>
+              <input
+                matInput
+                value="{{ anagrafica.cognome }}"
+                [(ngModel)]="anagrafica.cognome"
+                name="name"
+              />
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+
+  <div class="campoFORM">
+    <form class="example-form">
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field
+              class="inputFORM"
+              appearance="outline"
+              subscriptSizing="dynamic"
+            >
+              <mat-label class="nomeCAMPO">Nome *</mat-label>
+              <input
+                matInput
+                value="{{ anagrafica.nome }}"
+                [(ngModel)]="anagrafica.nome"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+
+
+</div>
+
+<!-- SECONDA RIGA -->
+  <div class="containerDIV3">
+    <form class="example-form">
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field
+              class="inputFORM"
+              appearance="outline"
+              subscriptSizing="dynamic"
+            >
+              <mat-label class="nomeCAMPO">Genere *</mat-label>
+              <mat-select
+                value="{{ anagrafica.sesso }}"
+                [(ngModel)]="anagrafica.sesso"
+                [ngModelOptions]="{ standalone: true }"
+              >
+                <mat-option value="UOMO">UOMO</mat-option>
+                <mat-option value="DONNA">DONNA</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+    </form>
+
+
+    <form class="example-form">
+    <table class="example-full-width" cellspacing="0">
+      <tr>
+      <td><mat-form-field class="inputFORM" appearance="outline" subscriptSizing="dynamic">
+        <mat-label class="nomeCAMPO">Data di nascita *</mat-label>
+        <input matInput [matDatepicker]="picker" [value]="anagrafica.dataNascita | date:'YYYY-MM-DD'" [(ngModel)]="anagrafica.dataNascita" [ngModelOptions]="{standalone: true}">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field></td>
+    </tr>
+  </table>
+  </form>
+  </div>
+
+
+<!-- TERZA RIGA -->
+<div class="containerDIV3" style="padding-bottom: 0px">
+  <div class="campoFORM">
+    <form class="example-form">
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field
+              class="inputFORM"
+              appearance="outline"
+              subscriptSizing="dynamic"
+            >
+              <mat-label class="nomeCAMPO">Nazione *</mat-label>
+              <input
+                matInput
+                value="{{ anagrafica.nazione }}"
+                [(ngModel)]="anagrafica.nazione"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+
+  <div class="campoFORM">
+    <form class="example-form">
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field
+              class="inputFORM"
+              appearance="outline"
+              subscriptSizing="dynamic"
+            >
+              <mat-label class="nomeCAMPO">Provincia *</mat-label>
+              <input
+                matInput
+                value="{{ anagrafica.provincia }}"
+                [(ngModel)]="anagrafica.provincia"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+
+  <div class="campoFORM">
+    <form class="example-form">
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field
+              class="inputFORM"
+              appearance="outline"
+              subscriptSizing="dynamic"
+            >
+              <mat-label class="nomeCAMPO">Città di residenza *</mat-label>
+              <input
+                matInput
+                value="{{ anagrafica.citta }}"
+                [(ngModel)]="anagrafica.citta"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+
+  <div class="campoFORM">
+    <form class="example-form">
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field
+              class="inputFORM"
+              appearance="outline"
+              subscriptSizing="dynamic"
+            >
+              <mat-label class="nomeCAMPO">Indirizzo *</mat-label>
+              <input
+                matInput
+                value="{{ anagrafica.indirizzo }}"
+                [(ngModel)]="anagrafica.indirizzo"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+</div>
+
+<div class="containerDIV2">
+  <p class="nomeCAMPO" style="margin-top: 10px">* Campi obbligatori</p>
+</div>
+
+<!-- TITOLO SECONDO FORM -->
+<div class="containerDIV2" style="padding-top: 40px">
+  <p class="p2">Informazioni Accesso</p>
+</div>
+
+<!-- INFORMAZIONI ACCESSO -->
+<div class="containerDIV3">
+  <div class="campoFORM">
+    <form class="example-form">
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field
+              class="inputFORM"
+              appearance="outline"
+              subscriptSizing="dynamic"
+            >
+              <mat-label class="nomeCAMPO">Email *</mat-label>
+              <input
+                matInput
+                value="{{ user.email }}"
+                [(ngModel)]="user.email"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+
+  <div class="campoFORM">
+    <form class="example-form">
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field
+              class="inputFORM"
+              appearance="outline"
+              subscriptSizing="dynamic"
+            >
+              <mat-label class="nomeCAMPO">Tipologia utente *</mat-label>
+              <mat-select
+                value="{{ user.usertype }}"
+                [(ngModel)]="user.usertype"
+                [ngModelOptions]="{ standalone: true }"
+              >
+                <mat-option value="ADMIN">ADMIN</mat-option>
+                <mat-option value="USER">USER</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+</div>
+<!-- SECONDA RIGA -->
+<div class="containerDIV3" style="padding-bottom: 0">
+  <div class="campoFORM">
+    <form class="example-form">
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field
+              class="inputFORM"
+              appearance="outline"
+              subscriptSizing="dynamic"
+            >
+              <mat-label class="nomeCAMPO">Password *</mat-label>
+              <input
+                matInput
+                [type]="hide ? 'password' : 'text'"
+                [(ngModel)]="user.password"
+                [ngModelOptions]="{ standalone: true }"
+              />
+              <button
+                mat-icon-button
+                matSuffix
+                (click)="hide = !hide"
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide"
+                class="nascondiPSW"
+              >
+                <mat-icon>{{
+                  hide ? "visibility_off" : "visibility"
+                }}</mat-icon>
+              </button>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+
+  <div class="campoFORM">
+    <form class="example-form">
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field
+              class="inputFORM"
+              appearance="outline"
+              subscriptSizing="dynamic"
+            >
+              <mat-label class="nomeCAMPO">Conferma Password *</mat-label>
+              <input
+                matInput
+                [type]="hide2 ? 'password' : 'text'"
+                [(ngModel)]="confirmPassword"
+                [ngModelOptions]="{ standalone: true }"
+              />
+              <button
+                mat-icon-button
+                matSuffix
+                (click)="hide2 = !hide2"
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide2"
+                class="nascondiPSW"
+              >
+                <mat-icon>{{
+                  hide2 ? "visibility_off" : "visibility"
+                }}</mat-icon>
+              </button>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="containerDIV4">
+  <div class="footerFORM">
+    <p
+      class="p4"
+      style="
+        display: flex;
+        font-weight: var(--mdc-typography-subtitle2-font-weight, 500);
+      "
+    >
+      Gestione Account
+    </p>
+    <p class="p4" style="display: flex; font-size: smaller">
+      Puoi eliminare il tuo account e tutti i dati associati ad esso
+    </p>
+  </div>
+  <div>
+
+    <a
+      ><button class="button2" (click)="openPopUp()">ELIMINA</button>
+      </a >
+  </div>
+</div>
+</div>

@@ -1,0 +1,41 @@
+<div class="titoloDIV">
+  <div class="percorsoDIV">
+    <a [routerLink]="['/admin-dashboard/users']"><p class="p2" style="margin-right: 10px;">Utenti</p></a>
+    <a [routerLink]="['/admin-dashboard/users']"><p class="p2">/ Tutti gli utenti</p></a>
+    <p>/ Modifica Profilo</p>
+  </div>
+  <h1>Dettaglio Utente</h1>
+ </div>
+
+<!-- ANAGRAFICA -->
+<div class="containerDIV">
+  <div class="titoloFORM">
+  <p class="p3">{{ anagrafica.nome }} {{ anagrafica.cognome }}</p>
+  <a [routerLink]="['/admin-dashboard/users']" (click)="openDialogElimina(anagrafica.id)"><button class="button2">ELIMINA</button></a>
+</div>
+</div>
+
+<!-- PROFILO ANAGRAFICA -->
+<div class="containerDIV2">
+
+  <div class="colonna">
+    <p class="p2">EMAIL</p>
+    <p>{{ anagrafica.email }}</p>
+  </div>
+
+  <div class="colonna">
+    <p class="p2">GENERE</p>
+    <p>{{ anagrafica.sesso }}</p>
+  </div>
+
+  <div class="colonna">
+    <p class="p2">INDIRIZZO</p>
+    <p>{{ anagrafica.indirizzo }}</p>
+  </div>
+
+  <div class="colonna">
+    <p class="p2">DATA CREAZIONE</p>
+    <p>{{ anagrafica?.user?.dataCreazione | date:'dd-MM-YYYY'}}</p>
+  </div>
+
+</div>

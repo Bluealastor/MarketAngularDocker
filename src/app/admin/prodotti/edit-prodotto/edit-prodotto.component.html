@@ -1,0 +1,211 @@
+<div class="titoloDIV">
+  <div class="percorsoDIV">
+    <a [routerLink]="['/admin-dashboard/products']"><p class="p2" style="margin-right: 10px;">Prodotti</p></a>
+    <a [routerLink]="['/admin-dashboard/products']"><p class="p2">/ Tutti i prodotti</p></a>
+    <p>/ Modifica prodotto</p>
+  </div>
+  <div class="percorsoDIV" style="height: fit-content;">
+    <h1>Modifica prodotto</h1><button class="button2" (click)="delete()" style="background-color: transparent;">ELIMINA</button>
+  </div>
+ </div>
+
+<!-- DETTAGLIO -->
+<div class="containerDIV" style="padding-bottom: 20px;">
+  <div class="titoloFORM">
+  <p class="p3" style="color: gray;">Informazioni Generali </p>
+  </div>
+</div>
+
+<div class="containerDIV" style="margin-top: 0;padding-top: 0;padding-bottom: 0;height: fit-content;">
+
+<div class="containerDIV" style="margin-top: 0;justify-content: left;padding-top: 0;padding-bottom: 0;
+            padding-left: 0;padding-right: 0;width: 100%">
+
+  <!-- IMMAGINE PRODOTTO -->
+    <div class="containerDIV2" style="width: 35%;padding-left: 0;padding-bottom: 0;
+                padding-right: 0;flex-direction: column;margin-left: 0;height: 400px;">
+
+      <div style="width: 100%;padding-bottom: 10px;height: 100%;">
+      <!-- <img src="{{profileUrl}}" style="width: 100%; height: 100%;border-radius: 5px;" *ngIf="!prodotto.immagine1"> -->
+      <img src="{{profiloUrl}}" *ngIf="profiloUrl" style="width: 100%; height: 100%;border-radius: 5px;">
+      <img src="{{prodotto.immagine1}}" *ngIf="!profiloUrl" style="width: 100%; height: 100%;border-radius: 5px;">
+      </div>
+      <input type="file" #file [multiple]="false" (change)="onEdit($event)" style="display:none" />
+      <div class="imageButtonDIV">
+        <button class="button3" (click)="onDelete()" style="width: 100%;">CANCELLA</button>
+        <a href="javascript:void(0)" (click)="file.click()"  style="width: 100%;color: black;background-color: white;margin-left: 0;"  ><button style="width: 100%;" class="button4" >CARICA
+          IMMAGINE</button></a>
+
+      </div>
+
+
+    </div>
+
+
+
+  <!-- MODIFICA PRODOTTO -->
+  <div class="containerDIV2" style="padding-left: 0;width: 100%;padding-right: 0;flex-direction: column;padding-bottom: 0;">
+
+    <div class="containerDIV3" style="width: 100%;">
+      <div class="campoFORM">
+        <form class="example-form">
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+          <td><mat-form-field class="inputFORM" appearance="outline" subscriptSizing="dynamic">
+            <mat-label class="nomeCAMPO">Nome Prodotto *</mat-label>
+            <input matInput value="{{ prodotto.nome }}" [(ngModel)]="prodotto.nome" [ngModelOptions]="{standalone: true}">
+          </mat-form-field></td>
+        </tr>
+      </table>
+      </form>
+      </div>
+    </div>
+
+      <!-- SECONDA RIGA -->
+    <div class="containerDIV3">
+
+      <div class="campoFORM">
+        <form class="example-form">
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+          <td><mat-form-field class="inputFORM" appearance="outline" subscriptSizing="dynamic">
+            <mat-label class="nomeCAMPO">Tipologia *</mat-label>
+            <mat-select value="{{prodotto.type}}" [(ngModel)]="prodotto.type" [ngModelOptions]="{standalone: true}">
+              <mat-option value="ALIMENTARI">ALIMENTARI</mat-option>
+              <mat-option value="CANCELLERIA">CANCELLERIA</mat-option>
+            </mat-select>
+          </mat-form-field></td>
+        </tr>
+      </table>
+      </form>
+      </div>
+
+
+      <div class="campoFORM">
+        <form class="example-form">
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+          <td><mat-form-field class="inputFORM" appearance="outline" subscriptSizing="dynamic">
+            <mat-label class="nomeCAMPO">Costo *</mat-label>
+            <div style="flex-direction: row;display: flex;">
+            <p class="nomeCAMPO" style="font-size: 16px;">€</p>
+            <input matInput value="{{ prodotto.prezzo }}" [(ngModel)]="prodotto.prezzo" [ngModelOptions]="{standalone: true}">
+            </div>
+          </mat-form-field></td>
+        </tr>
+      </table>
+      </form>
+      </div>
+
+
+      <div class="campoFORM">
+        <form class="example-form">
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+          <td><mat-form-field class="inputFORM" appearance="outline" subscriptSizing="dynamic">
+            <mat-label class="nomeCAMPO">Codice Prodotto *</mat-label>
+            <div style="flex-direction: row;display: flex;">
+              <p class="nomeCAMPO" style="font-size: 16px;font-weight: none;">#</p>
+              <p class="nomeCAMPO" style="font-size: 16px;color: black;margin-right: 0;font-weight: normal;">00000000</p>
+            <input matInput value="{{ prodotto.id }}"
+            [(ngModel)]="prodotto.id" readonly [ngModelOptions]="{standalone: true}">
+            </div>
+          </mat-form-field></td>
+        </tr>
+      </table>
+      </form>
+      </div>
+
+
+      <div class="campoFORM">
+        <form class="example-form">
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+          <td><mat-form-field class="inputFORM" appearance="outline" subscriptSizing="dynamic">
+            <mat-label class="nomeCAMPO">Orari Disponibili  *</mat-label>
+            <input matInput value="{{ prodotto.orariDisponibili }}" [(ngModel)]="prodotto.orariDisponibili" [ngModelOptions]="{standalone: true}">
+          </mat-form-field></td>
+        </tr>
+      </table>
+      </form>
+      </div>
+
+
+
+      </div>
+
+
+
+      <!-- TERZA RIGA -->
+    <div class="containerDIV3" style="padding-bottom: 0px;">
+
+      <div class="campoFORM">
+        <form class="example-form">
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+          <td style="height: 150px;padding-bottom: 0;"><mat-form-field class="inputFORM" appearance="outline" subscriptSizing="dynamic">
+            <mat-label class="nomeCAMPO">Descrizione *</mat-label>
+            <input matInput value="{{ prodotto.descrizione }}" [(ngModel)]="prodotto.descrizione" [ngModelOptions]="{standalone: true}">
+          </mat-form-field></td>
+        </tr>
+      </table>
+      </form>
+      </div>
+
+
+
+      </div>
+
+
+  </div>
+
+</div>
+
+
+
+
+
+</div>
+
+
+<!-- ALTRE IMMAGINI -->
+<div class="containerDIV" style="margin-top: 0;justify-content: left;padding-top: 30px;padding-bottom: 20px;">
+
+  <div class="percorsoDIV" style="height: fit-content;width: 100%;align-items: center;justify-content: space-between;">
+  <p class="p3" style="color: gray;">Altre immagini </p>
+  <input type="file" #ciao [multiple]="true" (change)="onEdit4($event)" style="display:none">
+  <a  (click)="ciao.click()"><button class="button4" style="width: 200px;color: black;background-color: white;">AGGIUNGI IMMAGINE</button></a>
+  </div>
+
+</div>
+
+<!-- ELENCO IMMAGINI -->
+<div class="containerDIV" style="margin-top: 0;justify-content: left;padding-top: 0px;padding-bottom: 10px;display: flex; flex-direction: row;">
+
+  <div class="percorsoDIV" style="height: fit-content;width: 100%;align-items: center;gap: 20px;">
+    <div *ngFor="let file of fil" style="width: fit-content;"><div class="filecontainer" >
+      <div class="icon" style="display: flex; flex-wrap: nowrap;">
+        <mat-icon>image</mat-icon>
+      </div>
+      <div class="textcontainer"><p>{{file.name}}</p>
+        <p class="type">{{file.type}}/{{((file.size/1024)/1024)| number: '1.2-2' }}mb</p>
+      </div>  </div>  </div>
+
+
+
+
+</div>
+</div>
+
+
+<!-- FOOTER -->
+<div class="containerDIV" style="margin-top: 0;justify-content: left;padding-top: 60px;padding-bottom: 20px;">
+
+  <div class="percorsoDIV" style="height: fit-content;width: 100%;align-items: center;gap: 20px;justify-content: space-between;">
+    <p class="p4">* Campi obbligatori </p>
+    <button class="button2" style="width: 150px;color: white;background-color: coral;margin-left: 0;border-color: coral;"
+    (click)="update()">SALVA</button>
+  </div>
+
+</div>
+

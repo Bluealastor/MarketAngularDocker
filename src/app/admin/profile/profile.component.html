@@ -1,0 +1,67 @@
+<div class="titoloDIV">
+  <div class="percorsoDIV">
+    <a [routerLink]="['/admin-dashboard/profile']"><p class="p4" style="color: black;font-weight: 400;">Il tuo Profilo</p></a></div>
+  <h1>Il tuo profilo</h1>
+  </div>
+
+<!-- ANAGRAFICA -->
+<div class="containerDIV">
+  <div class="titoloFORM">
+  <p class="p3">{{ anagrafica.nome }} {{ anagrafica.cognome }}</p>
+  <a [routerLink]="['/admin-dashboard/editProfile']"><button class="button2">MODIFICA</button></a>
+</div>
+</div>
+
+<!-- PROFILO ANAGRAFICA -->
+<div class="containerDIV2">
+
+  <div class="colonna">
+    <p class="p2">EMAIL</p>
+    <p>{{ anagrafica.email }}</p>
+  </div>
+
+  <div class="colonna">
+    <p class="p2">DATA DI NASCITA</p>
+    <p>{{ anagrafica.dataNascita | date:'dd-MM-YYYY' }}</p>
+  </div>
+
+  <div class="colonna">
+    <p class="p2">GENERE</p>
+    <p>{{ anagrafica.sesso }}</p>
+  </div>
+
+  <div class="colonna">
+    <p class="p2">INDIRIZZO</p>
+    <p>{{ anagrafica.indirizzo }}</p>
+  </div>
+
+  <div class="colonna">
+    <p class="p2">PASSWORD</p>
+    <p>{{ password }}</p>
+  </div>
+
+</div>
+
+
+<!-- NEGOZIO -->
+<div class="containerDIV">
+  <div class="titoloFORM">
+  <p class="p3">{{ negozio.nome }}</p>
+  <a [routerLink]="['/admin-dashboard/editNegozio']"><button class="button2">MODIFICA</button></a>
+</div>
+</div>
+
+<!-- NEGOZIO ANAGRAFICA -->
+<div class="containerDIV2" style="height: fit-content;">
+
+  <div class="colonna">
+    <p class="p2">INDIRIZZO</p>
+    <p>{{ negozio.indirizzo }}</p>
+  </div>
+
+  <div class="colonna" style="margin-right: 20px;">
+    <p class="p2">DESCRIZIONE</p>
+    <p>{{ negozio.descrizione }}</p>
+  </div>
+
+</div>

@@ -1,0 +1,50 @@
+<div class="linea"></div>
+<div class="pagina">
+  <div class="immagine"></div>
+
+  <div class="content">
+    <div class="form  ">
+      <form #f="ngForm">
+        <h2 align-text="center">Accedi Ora<br /></h2>
+        <h4>
+          Inserisci le credenziali di accesso usate in fase di registrazione
+        </h4>
+
+        <div class="input">
+          <mat-form-field appearance="outline"subscriptSizing="dynamic" class="input-login">
+            <mat-label>Email</mat-label>
+            <input matInput id="user" name="email" ngModel />
+          </mat-form-field>
+          <mat-form-field appearance="outline" subscriptSizing="dynamic" class="input-login">
+            <mat-label >Password</mat-label>
+            <div style="display: flex; flex-wrap: nowrap; justify-content: center; align-items: center;">
+            <input matInput id="pass" name="password" [type]="showPassword ? 'text' : 'password'" ngModel />
+              <mat-icon (click)="PasswordVisibility()">{{ showPassword ?  'visibility' :  'visibility_off' }}</mat-icon>
+          </div>
+          </mat-form-field>
+        </div>
+
+
+          <div class="forget">
+            <p class="left">
+            <mat-checkbox color="warn"></mat-checkbox>
+            Ricordami
+            </p>
+            <p class="right"><a>password Dimenticata?</a></p>
+
+        </div>
+          <button
+            mat-raised-button
+            color="coral"
+            type="submit"
+            (click)="login(f)"
+          >
+            Accedi ora
+          </button>
+          <br><br>
+          <div class="Register">Non hai un account?<a [routerLink]="'../register'" style="padding-left: 200px; text-decoration: underline;">
+          Registrati</a></div>
+      </form>
+    </div>
+  </div>
+</div>

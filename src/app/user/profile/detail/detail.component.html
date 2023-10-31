@@ -1,0 +1,36 @@
+<!-- Card Profilo -->
+<div id="page">
+  <div class="profile-card">
+    <!-- sezione colore 1 -->
+    <div class="colore1">
+    <img src="https://th.bing.com/th/id/OIP.Zb9DGej1R7Bla_7JhuenIQAAAA?pid=ImgDet&w=181&h=181&c=7&dpr=1,3" class="avatar2">
+  </div>
+  <!-- sezione colore 2 -->
+  <div class="color2">
+    <div class="data">
+      <!-- Dati Utente -->
+    <div class="utente_mail">
+    <h2 style="margin: 0;">{{anagrafica.nome}}</h2>
+    <p>{{anagrafica.email}}</p>
+    </div>
+    <div class="data_description">
+   <div class="genere">
+    <h4 style="margin: 0;">Genere</h4>
+    <h5 style="margin: 0;">{{anagrafica.sesso}}</h5>
+    </div>
+    <div class="data_di_nascita">
+    <h4 style="margin: 0;">Data di Nascita</h4>
+    <h5 style="margin: 0;">{{anagrafica.dataNascita | date:'yyy/MM/dd'}}</h5>
+    </div> 
+    <div class="dati_di_residenza">
+    <h4 style="margin: 0;">Dati di residenza</h4>
+    <h5 style="margin: 0;">{{anagrafica.indirizzo}}</h5>
+    </div> 
+   
+    
+    </div>
+    </div>
+    <button class="btn2" [routerLink]="['../edit']">MODIFICA</button>
+      </div>
+    </div>
+</div>
